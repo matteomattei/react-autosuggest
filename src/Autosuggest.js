@@ -94,7 +94,7 @@ export default class Autosuggest extends Component {
     highlightFirstSuggestion: false,
     theme: defaultTheme,
     id: '1',
-    selectOnTab: false
+    selectOnTab: false,
   };
 
   constructor({ alwaysRenderSuggestions }) {
@@ -497,10 +497,12 @@ export default class Autosuggest extends Component {
     const { value } = inputProps;
     const { valueBeforeUpDown } = this.state;
 
-    let result = alueBeforeUpDown === null ? value : valueBeforeUpDown;
-    if(result){
+    let result = valueBeforeUpDown === null ? value : valueBeforeUpDown;
+
+    if (result) {
       return result.trim();
     }
+
     return result;
   }
 
@@ -529,7 +531,7 @@ export default class Autosuggest extends Component {
       getSuggestionValue,
       alwaysRenderSuggestions,
       highlightFirstSuggestion,
-      selectOnTab
+      selectOnTab,
     } = this.props;
     const {
       isFocused,
@@ -674,7 +676,7 @@ export default class Autosuggest extends Component {
               break;
             }
 
-            if (keyCode === 9 && !selectOnTab){
+            if (keyCode === 9 && !selectOnTab) {
               break;
             }
 

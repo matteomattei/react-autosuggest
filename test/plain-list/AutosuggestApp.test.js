@@ -33,7 +33,7 @@ import {
   getEvents,
   mouseUpDocument,
   dragSuggestionOutAndIn,
-  unmountApp
+  unmountApp,
 } from '../helpers';
 import AutosuggestApp, {
   getSuggestionValue,
@@ -45,7 +45,7 @@ import AutosuggestApp, {
   onSuggestionsFetchRequested,
   onSuggestionsClearRequested,
   onSuggestionSelected,
-  onSuggestionHighlighted
+  onSuggestionHighlighted,
 } from './AutosuggestApp';
 
 describe('Default Autosuggest', () => {
@@ -367,7 +367,7 @@ describe('Default Autosuggest', () => {
       expect(getSuggestionValue).to.have.been.calledOnce;
       expect(getSuggestionValue).to.have.been.calledWithExactly({
         name: 'Ruby',
-        year: 1995
+        year: 1995,
       });
     });
 
@@ -376,7 +376,7 @@ describe('Default Autosuggest', () => {
       expect(getSuggestionValue).to.have.been.calledOnce;
       expect(getSuggestionValue).to.have.been.calledWithExactly({
         name: 'Ruby',
-        year: 1995
+        year: 1995,
       });
     });
 
@@ -385,7 +385,7 @@ describe('Default Autosuggest', () => {
       expect(getSuggestionValue).to.have.been.calledOnce;
       expect(getSuggestionValue).to.have.been.calledWithExactly({
         name: 'Ruby',
-        year: 1995
+        year: 1995,
       });
     });
 
@@ -455,7 +455,7 @@ describe('Default Autosuggest', () => {
       expect(onChange).to.have.been.calledOnce;
       expect(onChange).to.be.calledWithExactly(syntheticEventMatcher, {
         newValue: 'c+',
-        method: 'type'
+        method: 'type',
       });
     });
 
@@ -464,7 +464,7 @@ describe('Default Autosuggest', () => {
       expect(onChange).to.have.been.calledOnce;
       expect(onChange).to.be.calledWithExactly(syntheticEventMatcher, {
         newValue: 'C',
-        method: 'down'
+        method: 'down',
       });
     });
 
@@ -473,7 +473,7 @@ describe('Default Autosuggest', () => {
       expect(onChange).to.have.been.calledOnce;
       expect(onChange).to.be.calledWithExactly(syntheticEventMatcher, {
         newValue: 'Clojure',
-        method: 'up'
+        method: 'up',
       });
     });
 
@@ -483,7 +483,7 @@ describe('Default Autosuggest', () => {
       expect(onChange).to.have.been.calledOnce;
       expect(onChange).to.be.calledWithExactly(syntheticEventMatcher, {
         newValue: '',
-        method: 'escape'
+        method: 'escape',
       });
     });
 
@@ -492,7 +492,7 @@ describe('Default Autosuggest', () => {
       expect(onChange).to.have.been.calledOnce;
       expect(onChange).to.be.calledWithExactly(syntheticEventMatcher, {
         newValue: 'C++',
-        method: 'click'
+        method: 'click',
       });
     });
 
@@ -610,7 +610,7 @@ describe('Default Autosuggest', () => {
           suggestionValue: 'JavaScript',
           suggestionIndex: 1,
           sectionIndex: null,
-          method: 'click'
+          method: 'click',
         }
       );
     });
@@ -626,7 +626,7 @@ describe('Default Autosuggest', () => {
           suggestionValue: 'Java',
           suggestionIndex: 0,
           sectionIndex: null,
-          method: 'enter'
+          method: 'enter',
         }
       );
     });
@@ -650,7 +650,7 @@ describe('Default Autosuggest', () => {
       clickSuggestion(1);
       expect(
         getEvents().filter(
-          event => event === 'onChange' || event === 'onSuggestionSelected'
+          (event) => event === 'onChange' || event === 'onSuggestionSelected'
         )
       ).to.deep.equal(['onChange', 'onSuggestionSelected']);
     });
@@ -666,7 +666,7 @@ describe('Default Autosuggest', () => {
       mouseEnterSuggestion(0);
       expect(onSuggestionHighlighted).to.have.been.calledOnce;
       expect(onSuggestionHighlighted).to.have.been.calledWithExactly({
-        suggestion: { name: 'Java', year: 1995 }
+        suggestion: { name: 'Java', year: 1995 },
       });
     });
 
@@ -676,7 +676,7 @@ describe('Default Autosuggest', () => {
       mouseLeaveSuggestion(0);
       expect(onSuggestionHighlighted).to.have.been.calledOnce;
       expect(onSuggestionHighlighted).to.have.been.calledWithExactly({
-        suggestion: null
+        suggestion: null,
       });
     });
   });
@@ -689,7 +689,7 @@ describe('Default Autosuggest', () => {
       expect(onSuggestionsFetchRequested).to.have.been.calledOnce;
       expect(onSuggestionsFetchRequested).to.have.been.calledWithExactly({
         value: 'j',
-        reason: 'input-changed'
+        reason: 'input-changed',
       });
     });
 
@@ -701,7 +701,7 @@ describe('Default Autosuggest', () => {
       expect(onSuggestionsFetchRequested).to.have.been.calledOnce;
       expect(onSuggestionsFetchRequested).to.have.been.calledWithExactly({
         value: 'JavaScript',
-        reason: 'suggestions-revealed'
+        reason: 'suggestions-revealed',
       });
     });
 
@@ -837,7 +837,7 @@ describe('Default Autosuggest', () => {
       blurInput();
       expect(onBlur).to.have.been.calledOnce;
       expect(onBlur).to.have.been.calledWithExactly(syntheticEventMatcher, {
-        highlightedSuggestion: null
+        highlightedSuggestion: null,
       });
     });
   });

@@ -7,8 +7,8 @@ var host = process.env.NODE_HOST || 'localhost';
 var port = process.env.NODE_PORT || 3000;
 
 new WebpackDevServer(webpack(config), {
-  publicPath: config.output.publicPath
-}).listen(port, host, function(error) {
+  publicPath: config.output.publicPath,
+}).listen(port, host, function (error) {
   if (error) {
     console.error(error); // eslint-disable-line no-console
     process.exit(1);
