@@ -53,6 +53,7 @@ export default class Autosuggest extends Component {
     },
     shouldRenderSuggestions: PropTypes.func,
     alwaysRenderSuggestions: PropTypes.bool,
+    selectOnTab: PropTypes.bool,
     multiSection: PropTypes.bool,
     renderSectionTitle: (props, propName) => {
       const renderSectionTitle = props[propName];
@@ -93,6 +94,7 @@ export default class Autosuggest extends Component {
     highlightFirstSuggestion: false,
     theme: defaultTheme,
     id: '1',
+    selectOnTab: false
   };
 
   constructor({ alwaysRenderSuggestions }) {
@@ -495,7 +497,11 @@ export default class Autosuggest extends Component {
     const { value } = inputProps;
     const { valueBeforeUpDown } = this.state;
 
-    return (valueBeforeUpDown === null ? value : valueBeforeUpDown).trim();
+    let result = alueBeforeUpDown === null ? value : valueBeforeUpDown;
+    if(result){
+      return result.trim();
+    }
+    return result;
   }
 
   renderSuggestionsContainer = ({ containerProps, children }) => {
@@ -523,6 +529,7 @@ export default class Autosuggest extends Component {
       getSuggestionValue,
       alwaysRenderSuggestions,
       highlightFirstSuggestion,
+      selectOnTab
     } = this.props;
     const {
       isFocused,
@@ -660,9 +667,14 @@ export default class Autosuggest extends Component {
             break;
 
           // Enter
+          case 9:
           case 13: {
             // See #388
             if (event.keyCode === 229) {
+              break;
+            }
+
+            if (keyCode === 9 && !selectOnTab){
               break;
             }
 
